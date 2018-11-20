@@ -36,9 +36,14 @@ set(LIB_SOURCES
 )
 
 add_library(ReflexxesTypeII SHARED ${LIB_SOURCES})
-target_include_directories(ReflexxesTypeII PUBLIC include/RMLTypeII)
+target_include_directories(ReflexxesTypeII
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/RMLTypeII>
+    $<INSTALL_INTERFACE:include/RMLTypeII>  # <prefix>/include/mylib
+)
 target_compile_options(ReflexxesTypeII PRIVATE -Wall)
 set_target_properties(ReflexxesTypeII PROPERTIES SOVERSION ${PROJECT_VERSION})
+add_library(RMLTypeII::ReflexxesTypeII ALIAS ReflexxesTypeII)
 
 # Examples
 if(BUILD_EXAMPLES)
@@ -60,3 +65,41 @@ if(BUILD_EXAMPLES)
     target_link_libraries(${APP_NAME} ReflexxesTypeII)
   endforeach()
 endif()
+
+# Install
+include(GNUInstallDirs)
+
+set(INSTALL_CMAKE_CONFIG_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/RMLTypeII)
+
+install(TARGETS ReflexxesTypeII
+  EXPORT RMLTypeIITargets
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+install(DIRECTORY include/RMLTypeII DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+export(EXPORT RMLTypeIITargets
+  NAMESPACE RMLTypeII::
+  FILE ${CMAKE_CURRENT_BINARY_DIR}/RMLTypeIITargets.cmake
+)
+
+# Write CMake config files
+include(CMakePackageConfigHelpers)
+
+write_basic_package_version_file(${CMAKE_CURRENT_BINARY_DIR}/RMLTypeIIConfigVersion.cmake
+  COMPATIBILITY SameMajorVersion
+)
+configure_package_config_file(cmake/RMLTypeIIConfig.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/RMLTypeIIConfig.cmake
+  INSTALL_DESTINATION ${INSTALL_CMAKE_CONFIG_DIR}
+)
+
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/RMLTypeIIConfig.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/RMLTypeIIConfigVersion.cmake
+  DESTINATION ${INSTALL_CMAKE_CONFIG_DIR}
+)
+install(EXPORT RMLTypeIITargets
+  NAMESPACE RMLTypeII::
+  DESTINATION ${INSTALL_CMAKE_CONFIG_DIR}
+)

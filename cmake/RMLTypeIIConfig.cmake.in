@@ -1,0 +1,5 @@
+get_filename_component(RMLTypeII_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+if(NOT TARGET RMLTypeII::ReflexxesTypeII)
+  include("${RMLTypeII_CMAKE_DIR}/RMLTypeIITargets.cmake")
+endif()
