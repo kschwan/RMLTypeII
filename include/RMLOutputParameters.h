@@ -303,12 +303,12 @@ public:
         delete this->NewPositionVector                                      ;
         delete this->NewVelocityVector                                      ;
         delete this->NewAccelerationVector                                  ;
-        delete this->MinPosExtremaPositionVectorArray                       ;
-        delete this->MinPosExtremaVelocityVectorArray                       ;
-        delete this->MinPosExtremaAccelerationVectorArray                   ;
-        delete this->MaxPosExtremaPositionVectorArray                       ;
-        delete this->MaxPosExtremaVelocityVectorArray                       ;
-        delete this->MaxPosExtremaAccelerationVectorArray                   ;
+        delete[] this->MinPosExtremaPositionVectorArray                     ;
+        delete[] this->MinPosExtremaVelocityVectorArray                     ;
+        delete[] this->MinPosExtremaAccelerationVectorArray                 ;
+        delete[] this->MaxPosExtremaPositionVectorArray                     ;
+        delete[] this->MaxPosExtremaVelocityVectorArray                     ;
+        delete[] this->MaxPosExtremaAccelerationVectorArray                 ;
         delete this->MinExtremaTimesVector                                  ;
         delete this->MaxExtremaTimesVector                                  ;
         delete this->MinPosExtremaPositionVectorOnly                        ;
