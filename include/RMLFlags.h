@@ -88,7 +88,7 @@ public:
 //! \brief
 //! Destructor of the class RMLFlags
 //  ----------------------------------------------------------
-    ~RMLFlags(void)
+    virtual ~RMLFlags(void)
     {
     }
 

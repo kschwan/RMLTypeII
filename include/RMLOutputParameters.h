@@ -286,7 +286,7 @@ public:
 //! \brief
 //! Destructor of class RMLOutputParameters
 //  ----------------------------------------------------------
-    ~RMLOutputParameters(void)
+    virtual ~RMLOutputParameters(void)
     {
         unsigned int        i   =   0;
 

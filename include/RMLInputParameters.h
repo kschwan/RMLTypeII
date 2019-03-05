@@ -158,7 +158,7 @@ public:
 //! \brief
 //! Destructor of class RMLInputParameters
 //  ----------------------------------------------------------
-    ~RMLInputParameters(void)
+    virtual ~RMLInputParameters(void)
     {
         delete  this->SelectionVector               ;
         delete  this->CurrentPositionVector         ;
