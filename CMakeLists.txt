@@ -3,6 +3,10 @@ project(RMLTypeII VERSION 1.2.7)
 
 option(BUILD_EXAMPLES "Build example applications" OFF)
 
+# Use C++14
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 14)
+
 # Library
 set(LIB_SOURCES
   src/ReflexxesAPI.cpp
