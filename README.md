@@ -7,5 +7,6 @@ unforeseen sensor events.
 ## Getting started
 To build the library (and possibly the example applications), do
 
-    cmake . -DBUILD_TYPE=Release -DBUILD_EXAMPLES=ON
+    cmake . -DBUILD_TYPE=Release [-DBUILD_EXAMPLES=ON]
     make
+    make install
