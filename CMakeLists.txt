@@ -3,10 +3,6 @@ project(RMLTypeII VERSION 1.2.7)
 
 option(BUILD_EXAMPLES "Build example applications" OFF)
 
-# Use C++14
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_STANDARD 14)
-
 # Library
 set(LIB_SOURCES
   src/ReflexxesAPI.cpp
@@ -45,7 +41,7 @@ target_include_directories(ReflexxesTypeII
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/RMLTypeII>
     $<INSTALL_INTERFACE:include/RMLTypeII>  # <prefix>/include/mylib
 )
-target_compile_options(ReflexxesTypeII PRIVATE -Wall)
+# target_compile_options(ReflexxesTypeII PRIVATE -Wall)
 set_target_properties(ReflexxesTypeII PROPERTIES SOVERSION ${PROJECT_VERSION})
 add_library(RMLTypeII::ReflexxesTypeII ALIAS ReflexxesTypeII)
 
